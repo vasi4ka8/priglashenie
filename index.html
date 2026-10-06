@@ -480,6 +480,7 @@
   }
   .rsvp-frame-wrap iframe{
     width:100%;
+    height:1250px;
     min-height:520px;
     border:none;
     display:block;
@@ -757,13 +758,7 @@
       <p class="eyebrow">Анкета гостя</p>
       <h2 class="section-title">Будете с нами?</h2>
       <p class="lede">Пожалуйста, подтвердите своё присутствие — это займёт меньше минуты и очень поможет нам с рассадкой и меню.</p>
-      <div class="rsvp-frame-wrap" id="rsvpWrap">
-        <div class="rsvp-placeholder" id="rsvpPlaceholder">
-          <div class="rp-icon">💌</div>
-          <h3>Анкета скоро появится здесь</h3>
-          <p>Мы вот-вот подключим форму — загляните чуть позже или напишите нам напрямую.</p>
-        </div>
-      </div>
+      <a class="rsvp-fallback" href="https://forms.gle/PxqQ12pK1242USgk7" target="_blank" rel="noopener">Заполнить анкету</a>
     </div>
   </section>
 
@@ -787,34 +782,6 @@
 </div>
 
 <script>
-  /* =========================================================
-     RSVP / Google Forms
-     Чтобы подключить анкету:
-     1. Создайте форму на forms.google.com с нужными полями
-        (например: Имя и фамилия / Буду-не буду / Количество
-        гостей / Пожелания по еде и аллергии / Сообщение
-        молодожёнам).
-     2. Нажмите «Отправить» → значок «<>» (встроить) →
-        скопируйте ссылку из атрибута src="..." iframe-кода.
-     3. Вставьте эту ссылку между кавычками ниже.
-     ========================================================= */
-  var GOOGLE_FORM_URL = ""; // <-- сюда вставить ссылку на встраивание формы
-
-  document.addEventListener('DOMContentLoaded', function(){
-    var wrap = document.getElementById('rsvpWrap');
-    if (GOOGLE_FORM_URL) {
-      wrap.innerHTML =
-        '<iframe src="' + GOOGLE_FORM_URL + '" title="Анкета гостя">Загрузка…</iframe>';
-      var fallback = document.createElement('a');
-      fallback.href = GOOGLE_FORM_URL.replace('?embedded=true','');
-      fallback.target = '_blank';
-      fallback.rel = 'noopener';
-      fallback.className = 'rsvp-fallback';
-      fallback.textContent = 'Открыть анкету на весь экран';
-      wrap.insertAdjacentElement('afterend', fallback);
-    }
-  });
-
   // Countdown
   var target = new Date('2026-11-26T13:00:00+03:00').getTime();
   function pad(n){ return String(n).padStart(2,'0'); }
